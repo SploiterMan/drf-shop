@@ -109,16 +109,16 @@ class OrderCreateUserAPI(generics.CreateAPIView):
             return Response(data.errors)
 
 
-class OrderItemCreateAPI(generics.CreateAPIView):
+class OrderItemAddAPI(generics.CreateAPIView):
     serializer_class = OrderItemSerializer
-    permission_classes = [permissions.IsAuthenticated, ]
 
     def create(self, request, *args, **kwargs):
         data = OrderItemSerializer(data=self.request.data)
         if data.is_valid():
             data.save()
-            data.instance.order = Order.objects.filter(customer_id=self.request.user.id)
-            data.instance.price = data.instance.product.price
+            data.instance.order.id = Order.objects.filter(customer_id=self.request.user.id).first().id
+            data.save()
+            return Response({'message': 'اضافه شد.'})
         else:
             return Response(data.errors)
 
@@ -195,28 +195,23 @@ class ProductViewSlugAPI(generics.RetrieveAPIView):
     lookup_field = 'slug'
 
 
+class ProductFilterAPI(generics.ListAPIView):
+    """
+        List of Products ( filter by Category )
+    """
+    serializer_class = ProductSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Products.objects.filter(category__title=self.request.query_params.get('category'))
+
+
 class ProductListAPI(generics.ListAPIView):
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get_queryset(self):
         return Products.objects.filter(status='available')
-
-
-class ProductSpecialListAPI(generics.ListAPIView):
-    serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAuthenticated, ]
-
-    def get_queryset(self):
-        return Products.objects.filter(status='available', group='special')
-
-
-class ProductNormalListAPI(generics.ListAPIView):
-    serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAuthenticated, ]
-
-    def get_queryset(self):
-        return Products.objects.filter(status='available', group='normal')
 
 
 class ArticleViewAPI(generics.RetrieveAPIView):

@@ -3,7 +3,6 @@ from . import api_views
 
 urlpatterns = [
     # Users
-    path('user/order/add/ ', api_views.OrderUserAdd.as_view(), name='OrderUserAdd'),
     path('user/list/', api_views.UserListAPI.as_view(), name='UserList'),
     path('user/admin/list/', api_views.UserAdminAPI.as_view(), name='UserAdminList'),
     path('user/create/', api_views.UserCreateAPI.as_view(), name='UserCreate'),
@@ -26,10 +25,7 @@ urlpatterns = [
     path('category/product/<slug:slug>/', api_views.ProductCategorySlugViewAPI.as_view(), name='ProductCategorySlugView'),
     # products with ID
     path('product/list/', api_views.ProductsListAPI.as_view(), name='ProductsList'),
-    path('product/list/special/', api_views.ProductGroupSpecialAPI.as_view(), name='ProductGroupSpecial'),
-    path('product/list/special/false/', api_views.ProductGroupSpecialFalseAPI.as_view(), name='ProductGroupSpecialFalse'),
-    path('product/list/normal/', api_views.ProductGroupNormalAPI.as_view(), name='ProductGroupNormal'),
-    path('product/list/norman/false/', api_views.ProductGroupNormalFalseAPI.as_view(), name='ProductGroupNormalFalse'),
+    path('product/filter/', api_views.ProductFilterAPI.as_view(), name='ProductFilter'),
     path('product/list/true/', api_views.ProductsListAPI.as_view(), name='ProductsList'),
     path('product/create/', api_views.ProductCreateAPI.as_view(), name='ProductCreate'),
     path('product/update/<int:id>/', api_views.ProductUpdateAPI.as_view(), name='ProductUpdate'),

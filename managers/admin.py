@@ -3,8 +3,8 @@ from .models import *
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_filter = ['status', 'group', 'updated']
-    list_display = ['title', 'price', 'status', 'number', 'group', 'jdateUpdated']
+    list_filter = ['status', 'updated']
+    list_display = ['title', 'price', 'status', 'number', 'jdateUpdated']
     search_fields = ('title', 'slug')
 
 

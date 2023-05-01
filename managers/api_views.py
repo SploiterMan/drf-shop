@@ -218,41 +218,14 @@ class ProductStatusAPI(generics.ListAPIView):
     queryset = Products.objects.filter(status='available')
 
 
-class ProductGroupSpecialAPI(generics.ListAPIView):
+class ProductFilterAPI(generics.ListAPIView):
     """
-        List of Products ( group = Special , status = True )
-    """
-    serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = Products.objects.filter(group='special', status='available')
-
-
-class ProductGroupSpecialFalseAPI(generics.ListAPIView):
-    """
-        List of Products ( group = Special , status = False )
+        List of Products ( filter by Category )
     """
     serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = Products.objects.filter(group='special', status='available')
 
-
-class ProductGroupNormalAPI(generics.ListAPIView):
-    """
-        List of Products ( group = Normal , status = True )
-    """
-    serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = Products.objects.filter(group='normal', status='available')
-
-
-class ProductGroupNormalFalseAPI(generics.ListAPIView):
-    """
-        List of Products ( group = Normal , status = False )
-    """
-
-    serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = Products.objects.filter(group='normal', status='unavailable')
+    def get_queryset(self):
+        return Products.objects.filter(category__title=self.request.query_params.get('category'))
 
 
 class ProductViewAPI(generics.RetrieveAPIView):
@@ -412,46 +385,12 @@ class OrderCreateAPI(generics.CreateAPIView):
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
 
 
-class OrderUserAPI(generics.ListAPIView):
-    serializer_class = OrderSerializer
-
-    def get_queryset(self):
-        slam = self.request.query_params.get('id')
-        print(slam)
-        return Order.objects.filter(customer_id=self.request.user.id).all()
-
-
 class OrderPaidAPI(generics.ListAPIView):
     serializer_class = OrderSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Order.objects.filter(paid=True)
-
-
-class OrderAdd(generics.CreateAPIView):
-    serializer_class = OrderItemSerializer
-
-    def create(self, request, *args, **kwargs):
-        OrderItem.objects.create(
-            order=Order.objects.filter(customer_id=self.request.user.id).first(),
-            product=self.request.query_params.get()
-            )
-
-
-class OrderUserAdd(generics.CreateAPIView):
-    """
-        Add Order Item to User Order by User
-    """
-    serializer_class = OrderItemSerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-
-    def perform_create(self, serializer):
-        customer = self.request.user.id
-        order = Order.objects.filter(customer_id=customer).first()
-        product = Products.objects.filter(id=self.request.query_params.get('product_id')).first()
-        quantity = self.request.query_params('quantity')
-        OrderItem.objects.create(order=order, product_id=product, quantity=quantity)
 
 
 class OrderListAPI(generics.ListAPIView):

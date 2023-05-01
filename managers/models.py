@@ -21,10 +21,6 @@ class Products(models.Model):
         ('available', 'موجود'),
         ('unavailable', 'ناموجود')
     )
-    GROUP = (
-        ('special', 'ویژه'),
-        ('normal', 'معمولی')
-    )
     title = models.CharField(max_length=255, blank=False, null=False, verbose_name="عنوان")
     slug = models.SlugField(max_length=255, unique=True, blank=False, null=False, verbose_name="اسلاگ")
     description = models.TextField(null=False, blank=False, verbose_name="درباره")
@@ -32,7 +28,6 @@ class Products(models.Model):
     price = models.IntegerField(blank=False, null=False, verbose_name="قیمت")
     status = models.CharField(choices=STATUS, max_length=20, blank=False, null=False, verbose_name="وضعیت")
     number = models.IntegerField(null=False, blank=False, verbose_name="تعداد")
-    group = models.CharField(choices=GROUP, max_length=10, verbose_name="نوع محصول")
     category = models.ManyToManyField(ProductCategory, verbose_name="دسته بندی")
     created = models.DateTimeField(auto_now_add=True, verbose_name="زمان ساخت")
     updated = models.DateTimeField(auto_now=True, verbose_name="آخرین تغییرات")
