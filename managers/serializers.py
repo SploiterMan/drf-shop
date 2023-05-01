@@ -21,12 +21,6 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ArticleCategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ArticleCategory
-        fields = "__all__"
-
-
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article

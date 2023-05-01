@@ -16,18 +16,6 @@ class ProductCategory(models.Model):
         verbose_name_plural = 'دسته بندی محصولات'
 
 
-class ArticleCategory(models.Model):
-    title = models.CharField(max_length=255, blank=False, null=False, verbose_name="عنوان")
-    slug = models.SlugField(max_length=255, unique=True, blank=False, null=False, verbose_name="اسلاگ")
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'ذسته بندی مقالات'
-        verbose_name_plural = 'دسته بندی های مقالات'
-
-
 class Products(models.Model):
     STATUS = (
         ('available', 'موجود'),
@@ -72,7 +60,6 @@ class Article(models.Model):
     slug = models.SlugField(max_length=255, unique=True, blank=False, null=False, verbose_name="اسلاگ")
     description = models.TextField(null=False, blank=False, verbose_name="درباره")
     thumbnail = models.ImageField(null=False, blank=False, upload_to='article/%y/%m/%d', verbose_name="تصویر")
-    category = models.ManyToManyField(ArticleCategory, verbose_name="دسته بندی")
     status = models.CharField(choices=STATUS, max_length=10, blank=False, null=False, verbose_name="وضعیت")
     created = models.DateTimeField(auto_now_add=True, verbose_name="زمان ساخت")
     updated = models.DateTimeField(auto_now=True, verbose_name="آخرین تغییرات")

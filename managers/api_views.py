@@ -1,11 +1,11 @@
 from shop.settings import EMAIL_HOST_PAASWORD, EMAIL_HOST_USER, EMAIL_HOST, EMAIL_PORT_SSL
 from rest_framework.response import Response
+from rest_framework import permissions
 from email.message import EmailMessage
 from rest_framework import generics
 from users.models import User
 from .serializers import *
 from .models import *
-from rest_framework import permissions
 import smtplib
 
 
@@ -188,84 +188,6 @@ class ProductCategoryDestroySlugAPI(generics.DestroyAPIView):
     serializer_class = ProductCategorySerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = ProductCategory.objects.all()
-    lookup_field = 'slug'
-
-
-class ArticleCategoryCreateAPI(generics.CreateAPIView):
-    """
-        Create Article Category
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-
-
-class ArticleCategoryListAPI(generics.ListAPIView):
-    """
-        Show list of Product Categories
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = ArticleCategory.objects.all()
-
-
-class ArticleCategoryViewAPI(generics.RetrieveAPIView):
-    """
-        View Article Category with Article Category ID
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = ArticleCategory.objects.all()
-    lookup_field = 'id'
-
-
-class ArticleCategoryUpdateAPI(generics.RetrieveUpdateAPIView):
-    """
-        Update Article Category with Article Category ID
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = ArticleCategory.objects.all()
-    lookup_field = 'id'
-
-
-class ArticleCategoryDestroyAPI(generics.DestroyAPIView):
-    """
-        Destroy Article Category with Article Category ID
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = ArticleCategory.objects.all()
-    lookup_field = 'id'
-
-
-class ArticleCategoryViewSlugAPI(generics.RetrieveAPIView):
-    """
-        View Article Category with Article Category Slug
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = ArticleCategory.objects.all()
-    lookup_field = 'slug'
-
-
-class ArticleCategoryUpdateSlugAPI(generics.RetrieveUpdateAPIView):
-    """
-        Update Article Category with Article Category Slug
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = ArticleCategory.objects.all()
-    lookup_field = 'slug'
-
-
-class ArticleCategoryDestroySlugAPI(generics.DestroyAPIView):
-    """
-        Destroy Article Category with Article Category Slug
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = ArticleCategory.objects.all()
-
     lookup_field = 'slug'
 
 

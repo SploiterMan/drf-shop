@@ -147,37 +147,6 @@ class OrderItemViewAPI(generics.RetrieveAPIView):
     lookup_field = 'id'
 
 
-class ArticleCategoryListAPI(generics.ListAPIView):
-    """
-        List of Article Category
-    """
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAuthenticated, ]
-
-    def get_queryset(self):
-        return ArticleCategory.objects.all()
-
-
-class ArticleCategoryViewAPI(generics.RetrieveAPIView):
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAuthenticated, ]
-
-    def get_queryset(self):
-        return ArticleCategory.objects.all()
-
-    lookup_field = 'id'
-
-
-class ArticleCategoryViewSlugAPI(generics.RetrieveAPIView):
-    serializer_class = ArticleCategorySerializer
-    permission_classes = [permissions.IsAuthenticated, ]
-
-    def get_queryset(self):
-        return ArticleCategory.objects.all()
-
-    lookup_field = 'slug'
-
-
 class ProductCategoryListAPI(generics.ListAPIView):
     serializer_class = ProductCategorySerializer
     permission_classes = [permissions.IsAuthenticated, ]

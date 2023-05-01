@@ -29,5 +29,4 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(ProductCategory)
 admin.site.register(Products, ProductAdmin)
-admin.site.register(ArticleCategory)
 admin.site.register(Article, ArticleAdmin)

@@ -14,16 +14,6 @@ urlpatterns = [
     path('user/update/<str:email>/', api_views.UserUpdateEmailAPI.as_view(), name='UserUpdateEmail'),
     path('user/destroy/<str:email>/', api_views.UserDestroyEmailAPI.as_view(), name='UserDestroyEmail'),
     path('user/<str:email>/', api_views.UserViewEmailAPI.as_view(), name='UserViewEmail'),
-    # Article categories with ID
-    path('category/article/list/', api_views.ArticleCategoryListAPI.as_view(), name='ArticleCategoryList'),
-    path('category/article/create/', api_views.ArticleCategoryCreateAPI.as_view(), name='ArticleCategoryCreate'),
-    path('category/article/update/<int:id>/', api_views.ArticleCategoryUpdateAPI.as_view(), name='ArticleCategoryUpdate'),
-    path('category/article/destroy/<int:id>/', api_views.ArticleCategoryDestroyAPI.as_view(), name='ArticleCategoryDestroy'),
-    path('category/article/<int:id>/', api_views.ArticleCategoryViewAPI.as_view(), name='ArticleCategoryView'),
-    # Article categories with Slug
-    path('category/article/update/<slug:slug>/', api_views.ArticleCategoryUpdateSlugAPI.as_view(), name='ArticleCategorySlugUpdate'),
-    path('category/article/destroy/<slug:slug>/', api_views.ArticleCategoryDestroySlugAPI.as_view(), name='ArticleCategorySlugDestroy'),
-    path('category/article/<slug:slug>/', api_views.ArticleCategoryViewSlugAPI.as_view(), name='ArticleCategorySlugView'),
     # Product categories with ID
     path('category/product/list/', api_views.ProductCategoryListAPI.as_view(), name='ProductCategoryList'),
     path('category/product/create/', api_views.ProductCategoryCreateAPI.as_view(), name='ProductCategoryCreate'),
@@ -52,6 +42,7 @@ urlpatterns = [
     # articles with ID
     path('article/list/', api_views.ArticleListAPI.as_view(), name='ArticleList'),
     path('article/create/', api_views.ArticleCreateAPI.as_view(), name='ArticleCreate'),
+    path('article/list/status/', api_views.ArticleStatusAPI.as_view(), name='ArticleStatus'),
     path('article/update/<int:id>/', api_views.ArticleUpdateAPI.as_view(), name='ArticleUpdate'),
     path('article/destroy/<int:id>/', api_views.ArticleDestroyAPI.as_view(), name='ArticleDestroy'),
     path('article/<int:id>/', api_views.ArticleViewAPI.as_view(), name='ArticleView'),

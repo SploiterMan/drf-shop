@@ -16,10 +16,6 @@ urlpatterns = [
     path('orderitem/create/', api_views.OrderItemCreateAPI.as_view(), name='CustomerOrderItemCreate'),
     path('orderitem/list/', api_views.OrderItemListAPI.as_view(), name='OrderItemList'),
     path('orderitem/<int:id>/', api_views.OrderItemViewAPI.as_view(), name='CustomerOrderItemViewID'),
-    # article categories
-    path('category/article/list/', api_views.ArticleCategoryListAPI.as_view(), name='ArticleCategoryList'),
-    path('category/article/<int:id>/', api_views.ArticleCategoryViewAPI.as_view(), name='ArticleCategoryViewID'),
-    path('category/article/<slug:slug>/', api_views.ArticleCategoryViewSlugAPI.as_view(), name='ArticleCategoryViewSlug'),
     # product categories
     path('category/product/list', api_views.ProductCategoryListAPI.as_view(), name='ProductCategoryList'),
     path('category/product/<int:id>/', api_views.ProductCategoryViewAPI.as_view(), name='ProductCategoryList'),
