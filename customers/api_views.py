@@ -148,6 +148,9 @@ class OrderItemViewAPI(generics.RetrieveAPIView):
 
 
 class ProductCategoryListAPI(generics.ListAPIView):
+    """
+        List of Product Categories
+    """
     serializer_class = ProductCategorySerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
@@ -156,6 +159,9 @@ class ProductCategoryListAPI(generics.ListAPIView):
 
 
 class ProductCategoryViewAPI(generics.RetrieveAPIView):
+    """
+        Show Product Categories with ID
+    """
     serializer_class = ProductCategorySerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
@@ -165,17 +171,23 @@ class ProductCategoryViewAPI(generics.RetrieveAPIView):
     lookup_field = 'id'
 
 
-class ProductCategoryViewSlugAPI(generics.RetrieveAPIView):
+class ProductCategoryViewTitleAPI(generics.RetrieveAPIView):
+    """
+        Show Product Categories with title
+    """
     serializer_class = ProductCategorySerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get_queryset(self):
         return ProductCategory.objects.all()
 
-    lookup_field = 'slug'
+    lookup_field = 'title'
 
 
 class ProductViewAPI(generics.RetrieveAPIView):
+    """
+        Show available Products with ID
+    """
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
@@ -185,28 +197,31 @@ class ProductViewAPI(generics.RetrieveAPIView):
     lookup_field = 'id'
 
 
-class ProductViewSlugAPI(generics.RetrieveAPIView):
+class ProductViewTitleAPI(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get_queryset(self):
         return Products.objects.filter(status='available')
 
-    lookup_field = 'slug'
+    lookup_field = 'title'
 
 
 class ProductFilterAPI(generics.ListAPIView):
     """
-        List of Products ( filter by Category )
+        List of available Products ( filter by Category )
     """
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return Products.objects.filter(category__title=self.request.query_params.get('category'))
+        return Products.objects.filter(status='available', category__title=self.request.query_params.get('category'))
 
 
 class ProductListAPI(generics.ListAPIView):
+    """
+        List of available Products
+    """
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
@@ -215,6 +230,9 @@ class ProductListAPI(generics.ListAPIView):
 
 
 class ArticleViewAPI(generics.RetrieveAPIView):
+    """
+        Show Article with ID
+    """
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
@@ -224,14 +242,17 @@ class ArticleViewAPI(generics.RetrieveAPIView):
     lookup_field = 'id'
 
 
-class ArticleViewSlugAPI(generics.RetrieveAPIView):
+class ArticleViewTitleAPI(generics.RetrieveAPIView):
+    """
+        Show Articles with Title
+    """
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get_queryset(self):
         return Article.objects.filter(status='published')
 
-    lookup_field = 'slug'
+    lookup_field = 'title'
 
 
 class ArticleListAPI(generics.ListAPIView):

@@ -6,7 +6,6 @@ from users.models import *
 
 class ProductCategory(models.Model):
     title = models.CharField(max_length=255, blank=False, null=False, verbose_name="عنوان")
-    slug = models.SlugField(max_length=255, unique=True, blank=False, null=False, verbose_name="اسلاگ")
 
     def __str__(self):
         return self.title
@@ -22,7 +21,6 @@ class Products(models.Model):
         ('unavailable', 'ناموجود')
     )
     title = models.CharField(max_length=255, blank=False, null=False, verbose_name="عنوان")
-    slug = models.SlugField(max_length=255, unique=True, blank=False, null=False, verbose_name="اسلاگ")
     description = models.TextField(null=False, blank=False, verbose_name="درباره")
     thumbnail = models.ImageField(null=False, blank=False, upload_to='product/%y/%m/%d', verbose_name="تصویر")
     price = models.IntegerField(blank=False, null=False, verbose_name="قیمت")
@@ -52,7 +50,6 @@ class Article(models.Model):
         ('draft', 'پیش نویس')
     )
     title = models.CharField(max_length=255, blank=False, null=False, verbose_name="عنوان")
-    slug = models.SlugField(max_length=255, unique=True, blank=False, null=False, verbose_name="اسلاگ")
     description = models.TextField(null=False, blank=False, verbose_name="درباره")
     thumbnail = models.ImageField(null=False, blank=False, upload_to='article/%y/%m/%d', verbose_name="تصویر")
     status = models.CharField(choices=STATUS, max_length=10, blank=False, null=False, verbose_name="وضعیت")

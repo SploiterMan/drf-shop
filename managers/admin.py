@@ -5,13 +5,13 @@ from .models import *
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ['status', 'updated']
     list_display = ['title', 'price', 'status', 'number', 'jdateUpdated']
-    search_fields = ('title', 'slug')
+    search_fields = ('title',)
 
 
 class ArticleAdmin(admin.ModelAdmin):
     list_filter = ['auther', 'status', 'updated']
     list_display = ['title', 'status', 'auther', 'jdateUpdated']
-    search_fields = ('title', 'slug')
+    search_fields = ('title',)
 
 
 class OrderItemInline(admin.TabularInline):

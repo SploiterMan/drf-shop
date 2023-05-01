@@ -19,14 +19,14 @@ urlpatterns = [
     # product categories
     path('category/product/list', api_views.ProductCategoryListAPI.as_view(), name='ProductCategoryList'),
     path('category/product/<int:id>/', api_views.ProductCategoryViewAPI.as_view(), name='ProductCategoryList'),
-    path('category/product/<slug:slug>/', api_views.ProductCategoryViewSlugAPI.as_view(), name='ProductCategoryList'),
+    path('category/product/<str:title>/', api_views.ProductCategoryViewTitleAPI.as_view(), name='ProductCategoryList'),
     # products
     path('product/list/', api_views.ProductListAPI.as_view(), name='ProductList'),
     path('product/filter/', api_views.ProductFilterAPI.as_view(), name='ProductFilter'),
     path('product/<int:id>/', api_views.ProductViewAPI.as_view(), name='ProductViewID'),
-    path('product/<slug:slug>/', api_views.ProductViewSlugAPI.as_view(), name='ProductViewSlug'),
+    path('product/<str:title>/', api_views.ProductViewTitleAPI.as_view(), name='ProductViewTitle'),
     # articles
     path('article/list/', api_views.ArticleListAPI.as_view(), name='ArticleList'),
     path('article/<int:id>/', api_views.ArticleViewAPI.as_view(), name='ArticleViewID'),
-    path('article/<slug:slug>/', api_views.ArticleViewSlugAPI.as_view(), name='ArticleViewSlug'),
+    path('article/<str:title>/', api_views.ArticleViewTitleAPI.as_view(), name='ArticleViewTitle'),
 ]

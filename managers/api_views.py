@@ -160,35 +160,35 @@ class ProductCategoryDestroyAPI(generics.DestroyAPIView):
     lookup_field = 'id'
 
 
-class ProductCategorySlugViewAPI(generics.RetrieveAPIView):
+class ProductCategoryViewTitleAPI(generics.RetrieveAPIView):
     """
-        View Product Category with Product Category Slug
-    """
-    serializer_class = ProductCategorySerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = ProductCategory.objects.all()
-    lookup_field = 'slug'
-
-
-class ProductCategoryUpdateSlugAPI(generics.RetrieveUpdateAPIView):
-    """
-        Update Product Category with Product Category Slug
+        View Product Category with Product Category Title
     """
     serializer_class = ProductCategorySerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = ProductCategory.objects.all()
+    lookup_field = 'title'
 
-    lookup_field = 'slug'
 
-
-class ProductCategoryDestroySlugAPI(generics.DestroyAPIView):
+class ProductCategoryUpdateTitleAPI(generics.RetrieveUpdateAPIView):
     """
-        Destroy Product Category with Product Category Slug
+        Update Product Category with Product Category Title
     """
     serializer_class = ProductCategorySerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = ProductCategory.objects.all()
-    lookup_field = 'slug'
+
+    lookup_field = 'title'
+
+
+class ProductCategoryDestroyTitleAPI(generics.DestroyAPIView):
+    """
+        Destroy Product Category with Product Category Title
+    """
+    serializer_class = ProductCategorySerializer
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
+    queryset = ProductCategory.objects.all()
+    lookup_field = 'title'
 
 
 class ProductCreateAPI(generics.CreateAPIView):
@@ -258,34 +258,34 @@ class ProductDestroyAPI(generics.DestroyAPIView):
     lookup_field = 'id'
 
 
-class ProductViewSlugAPI(generics.RetrieveAPIView):
+class ProductViewTitleAPI(generics.RetrieveAPIView):
     """
-        View Product with Product Slug
-    """
-    serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
-    queryset = Products.objects.all()
-    lookup_field = 'slug'
-
-
-class ProductUpdateSlugAPI(generics.RetrieveUpdateAPIView):
-    """
-        Update Product with Product Slug
+        View Product with Product Title
     """
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = Products.objects.all()
-    lookup_field = 'slug'
+    lookup_field = 'title'
 
 
-class ProductDestroySlugAPI(generics.DestroyAPIView):
+class ProductUpdateTitleAPI(generics.RetrieveUpdateAPIView):
     """
-        Destroy Product with Product Slug
+        Update Product with Product Title
     """
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = Products.objects.all()
-    lookup_field = 'slug'
+    lookup_field = 'title'
+
+
+class ProductDestroyTitleAPI(generics.DestroyAPIView):
+    """
+        Destroy Product with Product Title
+    """
+    serializer_class = ProductSerializer
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
+    queryset = Products.objects.all()
+    lookup_field = 'title'
 
 
 class ArticleCreateAPI(generics.CreateAPIView):
@@ -344,19 +344,19 @@ class ArticleDestroyAPI(generics.DestroyAPIView):
     lookup_field = 'id'
 
 
-class ArticleViewSlugAPI(generics.RetrieveAPIView):
+class ArticleViewTitleAPI(generics.RetrieveAPIView):
     """
-        View Article with Article Slug
+        View Article with Article Title
     """
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = Article.objects.all()
-    lookup_field = 'slug'
+    lookup_field = 'title'
 
 
-class ArticleUpdateSlugAPI(generics.RetrieveUpdateAPIView):
+class ArticleUpdateTitleAPI(generics.RetrieveUpdateAPIView):
     """
-        Update Article with Article Slug
+        Update Article with Article Title
     """
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
@@ -364,17 +364,17 @@ class ArticleUpdateSlugAPI(generics.RetrieveUpdateAPIView):
     def get_queryset(self):
         return Article.objects.all()
 
-    lookup_field = 'slug'
+    lookup_field = 'title'
 
 
-class ArticleDestroySlugAPI(generics.DestroyAPIView):
+class ArticleDestroyTitleAPI(generics.DestroyAPIView):
     """
-        Destroy Article with Article Slug
+        Destroy Article with Article Title
     """
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = Article.objects.all()
-    lookup_field = 'slug'
+    lookup_field = 'title'
 
 
 class OrderCreateAPI(generics.CreateAPIView):

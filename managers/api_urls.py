@@ -19,10 +19,10 @@ urlpatterns = [
     path('category/product/update/<int:id>/', api_views.ProductCategoryUpdateAPI.as_view(), name='ProductCategoryUpdate'),
     path('category/product/destroy/<int:id>/', api_views.ProductCategoryDestroyAPI.as_view(), name='ProductCategoryDestroy'),
     path('category/product/<int:id>/', api_views.ProductCategoryViewAPI.as_view(), name='ProductCategoryView'),
-    # product categories with Slug
-    path('category/product/update/<slug:slug>/', api_views.ProductCategoryUpdateSlugAPI.as_view(), name='ProductCategoryUpdateSlug'),
-    path('category/product/destroy/<slug:slug>/', api_views.ProductCategoryDestroySlugAPI.as_view(), name='ProductCategoryDestroySlug'),
-    path('category/product/<slug:slug>/', api_views.ProductCategorySlugViewAPI.as_view(), name='ProductCategorySlugView'),
+    # product categories with Title
+    path('category/product/update/<str:title>/', api_views.ProductCategoryUpdateTitleAPI.as_view(), name='ProductCategoryUpdateTitle'),
+    path('category/product/destroy/<str:title>/', api_views.ProductCategoryDestroyTitleAPI.as_view(), name='ProductCategoryDestroyTitle'),
+    path('category/product/<str:title>/', api_views.ProductCategoryViewTitleAPI.as_view(), name='ProductCategoryViewTitle'),
     # products with ID
     path('product/list/', api_views.ProductsListAPI.as_view(), name='ProductsList'),
     path('product/filter/', api_views.ProductFilterAPI.as_view(), name='ProductFilter'),
@@ -31,10 +31,10 @@ urlpatterns = [
     path('product/update/<int:id>/', api_views.ProductUpdateAPI.as_view(), name='ProductUpdate'),
     path('product/destroy/<int:id>/', api_views.ProductDestroyAPI.as_view(), name='ProductDestroy'),
     path('product/<int:id>/', api_views.ProductViewAPI.as_view(), name='ProductView'),
-    # product with Slug
-    path('product/update/<slug:slug>/', api_views.ProductUpdateSlugAPI.as_view(), name='ProductUpdateSlug'),
-    path('product/destroy/<slug:slug>/', api_views.ProductDestroySlugAPI.as_view(), name='ProductDestroySlug'),
-    path('product/<slug:slug>/', api_views.ProductViewSlugAPI.as_view(), name='ProductViewSlug'),
+    # product with Title
+    path('product/update/<str:title>/', api_views.ProductUpdateTitleAPI.as_view(), name='ProductUpdateTitle'),
+    path('product/destroy/<str:title>/', api_views.ProductDestroyTitleAPI.as_view(), name='ProductDestroyTitle'),
+    path('product/<str:title>/', api_views.ProductViewTitleAPI.as_view(), name='ProductViewTitle'),
     # articles with ID
     path('article/list/', api_views.ArticleListAPI.as_view(), name='ArticleList'),
     path('article/create/', api_views.ArticleCreateAPI.as_view(), name='ArticleCreate'),
@@ -42,10 +42,10 @@ urlpatterns = [
     path('article/update/<int:id>/', api_views.ArticleUpdateAPI.as_view(), name='ArticleUpdate'),
     path('article/destroy/<int:id>/', api_views.ArticleDestroyAPI.as_view(), name='ArticleDestroy'),
     path('article/<int:id>/', api_views.ArticleViewAPI.as_view(), name='ArticleView'),
-    # article with Slug
-    path('article/update/<slug:slug>/', api_views.ArticleUpdateSlugAPI.as_view(), name='ArticleUpdateSlug'),
-    path('article/destroy/<slug:slug>/', api_views.ArticleDestroySlugAPI.as_view(), name='ArticleDestroySlug'),
-    path('article/<slug:slug>/', api_views.ArticleViewSlugAPI.as_view(), name='ArticleViewSlug'),
+    # article with Title
+    path('article/update/<str:title>/', api_views.ArticleUpdateTitleAPI.as_view(), name='ArticleUpdateTitle'),
+    path('article/destroy/<str:title>/', api_views.ArticleDestroyTitleAPI.as_view(), name='ArticleDestroyTitle'),
+    path('article/<str:title>/', api_views.ArticleViewTitleAPI.as_view(), name='ArticleViewTitle'),
     # order
     path('order/list/', api_views.OrderListAPI.as_view(), name='OrderList'),
     path('order/create/', api_views.OrderCreateAPI.as_view(), name='OrderCreate'),
