@@ -453,6 +453,7 @@ class OrderItemListAPI(generics.ListAPIView):
 
 
 class OrderItemFilterAPI(generics.ListAPIView):
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     serializer_class = OrderItemSerializer
 
     def get_queryset(self):

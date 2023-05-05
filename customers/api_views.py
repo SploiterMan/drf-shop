@@ -11,7 +11,7 @@ class UserDetailAPI(generics.ListAPIView):
         Show User Detail for User with ID
     """
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsUserOrIsAdmin]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return User.objects.filter(id=self.request.user.id).first()
@@ -24,7 +24,7 @@ class UserDetailEmailAPI(generics.ListAPIView):
         Show User Detail for User with ID
     """
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsUserOrIsAdmin]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return User.objects.filter(id=self.request.user.id).first()
@@ -37,7 +37,7 @@ class UserUpdateAPI(generics.RetrieveUpdateAPIView):
         Update User for User with ID
     """
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsUserOrIsAdmin, ]
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get_queryset(self):
         return User.objects.filter(id=self.request.user.id).first()
@@ -50,7 +50,7 @@ class UserUpdateEmailAPI(generics.RetrieveUpdateAPIView):
         Update User for User with email
     """
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsUserOrIsAdmin, ]
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get_queryset(self):
         return User.objects.filter(id=self.request.user.id).first()
@@ -83,7 +83,7 @@ class OrderViewAPI(generics.RetrieveAPIView):
         View Order with ID
     """
     serializer_class = OrderSerializer
-    permission_classes = [permissions.IsUserOrIsAdmin]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Order.objects.filter(customer_id=self.request.user.id).all()
@@ -110,6 +110,7 @@ class OrderCreateUserAPI(generics.CreateAPIView):
 
 
 class OrderItemAddAPI(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     serializer_class = OrderItemSerializer
 
     def create(self, request, *args, **kwargs):
