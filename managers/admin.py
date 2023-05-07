@@ -4,7 +4,7 @@ from .models import *
 
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ['status', 'updated']
-    list_display = ['title', 'price', 'status', 'number', 'jdateUpdated']
+    list_display = ['title', 'discounted', 'status', 'number', 'jdateUpdated']
     search_fields = ('title',)
 
 
